@@ -3,6 +3,7 @@
 A Go (golang) library for efficient weighted random picking
 
 [![GoDoc](https://godoc.org/github.com/minaguib/weightedrandom?status.svg)](https://godoc.org/github.com/minaguib/weightedrandom)
+[![Build Status](https://travis-ci.org/minaguib/weightedrandom.svg)](https://travis-ci.org/minaguib/weightedrandom)
 [![GoReport](https://goreportcard.com/badge/github.com/minaguib/weightedrandom)](https://goreportcard.com/report/github.com/minaguib/weightedrandom)
 
 ## About
