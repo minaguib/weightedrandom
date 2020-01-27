@@ -39,6 +39,35 @@ Ref: [Darts, Dice, and Coins: Sampling from a Discrete Distribution](https://www
 |Data structure storage|O(n)|
 |Time to pick an item|O(1)|
 
+## Performance benchmarks
+
+On a MacBook Pro, Intel(R) Core(TM) i5-8279U CPU @ 2.40GHz, 2133 MHz LPDDR3 memory:
+
+```
+$ go test -bench .
+goos: darwin
+goarch: amd64
+pkg: github.com/minaguib/weightedrandom
+
+BenchmarkNew/1_weights-8                 120750      8975 ns/op
+BenchmarkNew/10_weights-8                123405      9219 ns/op
+BenchmarkNew/100_weights-8               113221     10236 ns/op
+BenchmarkNew/1000_weights-8               64726     18177 ns/op
+BenchmarkNew/10000_weights-8              10000    102662 ns/op
+BenchmarkNew/100000_weights-8              1066    998494 ns/op
+BenchmarkNew/1000000_weights-8              116   9505488 ns/op
+BenchmarkNew/10000000_weights-8              12  94232780 ns/op
+
+BenchmarkPick/from_1_weights-8         79287788      14.0 ns/op
+BenchmarkPick/from_10_weights-8        67720063      16.4 ns/op
+BenchmarkPick/from_100_weights-8       67488416      17.1 ns/op
+BenchmarkPick/from_1000_weights-8      68422693      16.3 ns/op
+BenchmarkPick/from_10000_weights-8     67662000      16.6 ns/op
+BenchmarkPick/from_100000_weights-8    51558525      19.7 ns/op
+BenchmarkPick/from_1000000_weights-8   28105237      42.3 ns/op
+BenchmarkPick/from_10000000_weights-8  20680263      61.1 ns/op
+```
+
 ## Usage
 
 For usage, examples and documentation, see [GoDoc](https://godoc.org/github.com/minaguib/weightedrandom)
