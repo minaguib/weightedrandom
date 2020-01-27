@@ -68,28 +68,28 @@ func New(weights []float64) (*WeightedRandom, error) {
 
 	// Fan out small and large into prob and alias
 	for len(small) > 0 && len(large) > 0 {
-		small_i := small[0]
+		smallIdx := small[0]
 		small = small[1:]
-		large_i := large[0]
+		largeIdx := large[0]
 		large = large[1:]
 
-		wr.prob[small_i] = weights[small_i] / average
-		wr.alias[small_i] = large_i
-		weights[large_i] -= average - weights[small_i]
+		wr.prob[smallIdx] = weights[smallIdx] / average
+		wr.alias[smallIdx] = largeIdx
+		weights[largeIdx] -= average - weights[smallIdx]
 
-		if weights[large_i] < average {
-			small = append(small, large_i)
+		if weights[largeIdx] < average {
+			small = append(small, largeIdx)
 		} else {
-			large = append(large, large_i)
+			large = append(large, largeIdx)
 		}
 	}
 
 	// Any indexes remaining in small or large assume normalized average
-	for _, small_i := range small {
-		wr.prob[small_i] = 1.0
+	for _, smallIdx := range small {
+		wr.prob[smallIdx] = 1.0
 	}
-	for _, large_i := range large {
-		wr.prob[large_i] = 1.0
+	for _, largeIdx := range large {
+		wr.prob[largeIdx] = 1.0
 	}
 
 	return wr, nil
@@ -102,8 +102,7 @@ func (wr *WeightedRandom) Pick() int {
 
 	if wr.Rand.Float64() < wr.prob[col] {
 		return col
-	} else {
-		return wr.alias[col]
 	}
+	return wr.alias[col]
 
 }
