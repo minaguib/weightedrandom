@@ -49,23 +49,23 @@ goos: darwin
 goarch: amd64
 pkg: github.com/minaguib/weightedrandom
 
-BenchmarkNew/1_weights-8                 129896          8881 ns/op
-BenchmarkNew/10_weights-8                125815          9297 ns/op
-BenchmarkNew/100_weights-8               106694         10781 ns/op
-BenchmarkNew/1000_weights-8               50884         23185 ns/op
-BenchmarkNew/10000_weights-8               6634        152428 ns/op
-BenchmarkNew/100000_weights-8               698       1540491 ns/op
-BenchmarkNew/1000000_weights-8               75      15374675 ns/op
-BenchmarkNew/10000000_weights-8               7     161330317 ns/op
+BenchmarkNew/1_weights-8           126366      8967 ns/op
+BenchmarkNew/10_weights-8          126315      9015 ns/op
+BenchmarkNew/100_weights-8         112978      9985 ns/op
+BenchmarkNew/1000_weights-8         58854     19891 ns/op
+BenchmarkNew/10000_weights-8         9981    109303 ns/op
+BenchmarkNew/100000_weights-8        1029   1001077 ns/op
+BenchmarkNew/1000000_weights-8        112   9697761 ns/op
+BenchmarkNew/10000000_weights-8        12  89310961 ns/op
 
-BenchmarkPick/from_1_weights-8         81434600          13.9 ns/op
-BenchmarkPick/from_10_weights-8        42723463          26.0 ns/op
-BenchmarkPick/from_100_weights-8       43014874          26.1 ns/op
-BenchmarkPick/from_1000_weights-8      41333022          25.8 ns/op
-BenchmarkPick/from_10000_weights-8     39687285          26.8 ns/op
-BenchmarkPick/from_100000_weights-8    32212609          31.7 ns/op
-BenchmarkPick/from_1000000_weights-8   18433252          68.7 ns/op
-BenchmarkPick/from_10000000_weights-8  14053593          83.8 ns/op
+BenchmarkPick/from_1_weights-8            76958226        13.8 ns/op
+BenchmarkPick/from_10_weights-8           42556176        26.2 ns/op
+BenchmarkPick/from_100_weights-8          43152367        26.0 ns/op
+BenchmarkPick/from_1000_weights-8         42600124        26.0 ns/op
+BenchmarkPick/from_10000_weights-8        39454466        27.1 ns/op
+BenchmarkPick/from_100000_weights-8       31104279        32.5 ns/op
+BenchmarkPick/from_1000000_weights-8      17665467        69.6 ns/op
+BenchmarkPick/from_10000000_weights-8     11770742       104 ns/op
 ```
 
 ## Usage

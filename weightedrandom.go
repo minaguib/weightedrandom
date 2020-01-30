@@ -23,12 +23,15 @@ type WeightedRandom struct {
 	Rand  *rand.Rand
 }
 
-func average(weights []float64) float64 {
+func duplicateAndAverage(weights []float64) (newWeights []float64, average float64) {
+	newWeights = make([]float64, len(weights))
 	sum := float64(0)
-	for _, weight := range weights {
+	for i, weight := range weights {
 		sum += weight
+		newWeights[i] = weight
 	}
-	return sum / float64(len(weights))
+	average = sum / float64(len(weights))
+	return newWeights, average
 }
 
 // New accepts as input a slice of float64 weights.  At least 1 weight must be given otherwise error ErrNoWeights is returned
@@ -42,22 +45,17 @@ func New(weights []float64) (*WeightedRandom, error) {
 		return nil, ErrNoWeights
 	}
 
-	// Make a copy of weights as we'll mutate it later
-	weights2 := make([]float64, n)
-	copy(weights2, weights)
-	weights = weights2
-
 	wr := &WeightedRandom{
 		prob:  make([]float64, n),
 		alias: make([]int, n),
 		Rand:  rand.New(rand.NewSource(time.Now().UnixNano())),
 	}
 
-	average := average(weights)
+	weights, average := duplicateAndAverage(weights)
 
 	// Fan out weights indexes to small or large
-	var small []int
-	var large []int
+	small := make([]int, 0, n)
+	large := make([]int, 0, n)
 	for i, weight := range weights {
 		if weight >= average {
 			large = append(large, i)
