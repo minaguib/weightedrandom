@@ -11,7 +11,7 @@ const multiple = 10
 func makeWeights(numWeights int) []float64 {
 	weights := make([]float64, numWeights)
 	for i := 0; i < numWeights; i++ {
-		weights[i] = float64(numWeights % 10000)
+		weights[i] = float64(i % 10000)
 	}
 	return weights
 }
