@@ -30,15 +30,24 @@ func (jar *Jar) Add(item interface{}, weight float64) {
 	jar.wr = nil
 }
 
+// Ensures we have an inner weightedrandom initialized
+func (jar *Jar) ensureWR() error {
+	if jar.wr != nil {
+		return nil
+	}
+	wr, err := weightedrandom.New(jar.weights)
+	if err != nil {
+		return err
+	}
+	jar.wr = wr
+	return nil
+}
+
 // Pick picks a random item previously Added to the Jar and returns it
 // If no items were previously added to jar, an error is returned
 func (jar *Jar) Pick() (interface{}, error) {
-	if jar.wr == nil {
-		wr, err := weightedrandom.New(jar.weights)
-		if err != nil {
-			return nil, err
-		}
-		jar.wr = wr
+	if err := jar.ensureWR(); err != nil {
+		return nil, err
 	}
 	idx := jar.wr.Pick()
 	return jar.items[idx], nil
