@@ -1,10 +1,12 @@
-// Package jar provides a convenience container API wrapping the underlying weightedrandom library
+// Package jar is one of two convenience container APIs wrapping the underlying weightedrandom library
 //
 // Use Jar if:
 //
 // * You don't want to maintain your own slice/array to use the underlying weightedrandom library's index-based methods
 //
 // * You don't mind the performance overhead of casting your item to/from generic interface{}
+//
+// * You can't use the newer generics-based "container" convenience API
 //
 package jar
 
